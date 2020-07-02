@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\Checkout.PaymentGateway.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DocumentationFile>bin\Release\Checkout.PaymentGateway.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="8.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Checkout.ApplicationConfiguration\Checkout.ApplicationConfiguration.csproj" />
+    <ProjectReference Include="..\Common\Checkout.Enums\Checkout.Enums.csproj" />
+    <ProjectReference Include="..\Common\Checkout.Extensions\Checkout.Extensions.csproj" />
+    <ProjectReference Include="..\Common\Checkout.Filters\Checkout.Filters.csproj" />
+    <ProjectReference Include="..\Common\Checkout.Helpers\Checkout.Helpers.csproj" />
+    <ProjectReference Include="..\Core\Checkout.Application\Checkout.Application.csproj" />
+  </ItemGroup>
+
+
+</Project>
