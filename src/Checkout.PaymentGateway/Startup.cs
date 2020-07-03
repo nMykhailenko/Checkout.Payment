@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Checkout.Filters;
+using Checkout.Persistence.Modules.Sql;
+using Checkout.Application.Common.Configuration;
 
 namespace Checkout.PaymentGateway
 {
@@ -25,7 +27,9 @@ namespace Checkout.PaymentGateway
                 .AddNewtonsoftJson();
             services.AddMvc(options => { options.Filters.Add<ValidationFilter>(); });
 
-            services.RegisterModule(new SwaggerModule());
+            services.RegisterModule(new SwaggerModule())
+                .RegisterModule(new ApplicationModule())
+                .RegisterModule(new SqlModule(Configuration));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

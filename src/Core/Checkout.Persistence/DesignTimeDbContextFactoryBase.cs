@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Checkout.Persistence.Modules.Sql;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -9,7 +10,6 @@ namespace Checkout.Persistence
     public abstract class DesignTimeDbContextFactoryBase<TContext> :
         IDesignTimeDbContextFactory<TContext> where TContext : DbContext
     {
-        private const string ConnectionStringName = "CheckoutDatabase";
         private const string AspNetCoreEnvironment = "ASPNETCORE_ENVIRONMENT";
 
         public TContext CreateDbContext(string[] args)
@@ -31,7 +31,7 @@ namespace Checkout.Persistence
                 .AddEnvironmentVariables()
                 .Build();
 
-            var connectionString = configuration.GetConnectionString(ConnectionStringName);
+            var connectionString = configuration[$"{nameof(SqlConnectionSettings)}:{nameof(SqlConnectionSettings.DefaultConnection)}"];
 
             return Create(connectionString);
         }
@@ -40,7 +40,7 @@ namespace Checkout.Persistence
         {
             if (string.IsNullOrEmpty(connectionString))
             {
-                throw new ArgumentException($"Connection string '{ConnectionStringName}' is null or empty.", nameof(connectionString));
+                throw new ArgumentException($"Connection string is null or empty.", nameof(connectionString));
             }
 
             Console.WriteLine($"DesignTimeDbContextFactoryBase.Create(string): Connection string: '{connectionString}'.");
