@@ -41,7 +41,7 @@ namespace Checkout.Application.Payments.Query.GetPaymentDetail
             profile.CreateMap<Payment, PaymentDetailResponseModel>()
                 .ForMember(x => x.RequestId, opt => opt.MapFrom(src => src.Transaction.RequestId))
                 .ForMember(x => x.BankRequestId, opt => opt.MapFrom(src => src.Transaction.BankRequestId))
-                .ForMember(x => x.CardNumber, opt => opt.MapFrom(src => src.CardInformation.CardNumber))
+                .ForMember(x => x.CardNumber, opt => opt.MapFrom(src => src.CardInformation.MaskedCardNumber))
                 .ForMember(x => x.CardHolder, opt => opt.MapFrom(src => src.CardInformation.CardHolder))
                 .ForMember(x => x.State, opt => opt.MapFrom(src => src.Transaction.State));
         }

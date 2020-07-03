@@ -10,6 +10,7 @@ namespace Checkout.PaymentGateway.Controllers
     /// <summary>
     /// Class describes base controller.
     /// </summary>
+    [Route("api/[controller]")]
     public class BaseController : Controller
     {
         private IMediator _mediator;

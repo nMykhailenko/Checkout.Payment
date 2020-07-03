@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Checkout.Extensions;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Checkout.Domain.ValueObjects
 {
@@ -16,7 +15,8 @@ namespace Checkout.Domain.ValueObjects
 
         public CardInformation(string cardNumber, string cardHolder)
         {
-            CardNumber = cardNumber;
+            CardNumber = cardNumber.EncryptSha512();
+            MaskedCardNumber = cardNumber.Mask(4, 10);
             CardHolder = cardHolder;
         }
 
@@ -24,6 +24,11 @@ namespace Checkout.Domain.ValueObjects
         /// Gets or sets a card number.
         /// </summary>
         public string CardNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets masked card number.
+        /// </summary>
+        public string MaskedCardNumber { get; set; }
 
         /// <summary>
         /// Gets or sets a card holder.

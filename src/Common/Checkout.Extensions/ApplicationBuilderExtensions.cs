@@ -6,7 +6,7 @@ namespace Checkout.Extensions
     /// <summary>
     /// Application builder extensions.
     /// </summary>
-    public static class ApplicationBuilderExtension
+    public static class ApplicationBuilderExtensions
     {
         /// <summary>
         /// Use swagger.

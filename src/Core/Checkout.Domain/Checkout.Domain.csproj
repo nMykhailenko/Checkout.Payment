@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Checkout.Enums\Checkout.Enums.csproj" />
+    <ProjectReference Include="..\..\Common\Checkout.Extensions\Checkout.Extensions.csproj" />
   </ItemGroup>
 
 </Project>
