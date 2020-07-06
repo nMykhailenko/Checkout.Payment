@@ -3,6 +3,9 @@ using System;
 
 namespace Checkout.Application.Payments.Commands.CreatePayment
 {
+    /// <summary>
+    /// Create payment command validator.
+    /// </summary>
     public class CreatePaymentCommandValidator : AbstractValidator<CreatePaymentCommand>
     {
         public CreatePaymentCommandValidator()

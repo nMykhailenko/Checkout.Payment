@@ -10,7 +10,6 @@ using Checkout.Filters;
 using Checkout.Persistence.Modules.Sql;
 using Checkout.Application.Common.Configuration;
 using FluentValidation.AspNetCore;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace Checkout.PaymentGateway
