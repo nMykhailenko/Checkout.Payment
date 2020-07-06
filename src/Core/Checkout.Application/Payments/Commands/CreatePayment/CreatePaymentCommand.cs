@@ -82,7 +82,7 @@ namespace Checkout.Application.Payments.Commands.CreatePayment
                     State = entity.Transaction.State
                 };
 
-                await _mediator.Publish(paymentCreated, cancellationToken);
+                //await _mediator.Publish(paymentCreated, cancellationToken);
 
                 return _mapper.Map<PaymentResponseModel>(entity);
             }

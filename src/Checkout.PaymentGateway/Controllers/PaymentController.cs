@@ -11,6 +11,7 @@ namespace Checkout.PaymentGateway.Controllers
     /// <summary>
     /// Payment controller
     /// </summary>
+    [Route("api/[controller]")]
     public class PaymentController : BaseController
     {
         /// <summary>

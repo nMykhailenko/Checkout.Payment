@@ -2,6 +2,7 @@
 using Checkout.ApplicationConfiguration.Injection.Abstract;
 using AutoMapper;
 using MediatR;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -22,6 +23,7 @@ namespace Checkout.Application.Common.Configuration
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
             return services;
         }

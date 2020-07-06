@@ -9,6 +9,9 @@ using Microsoft.Extensions.Hosting;
 using Checkout.Filters;
 using Checkout.Persistence.Modules.Sql;
 using Checkout.Application.Common.Configuration;
+using FluentValidation.AspNetCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Checkout.PaymentGateway
 {
@@ -24,8 +27,13 @@ namespace Checkout.PaymentGateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .AddNewtonsoftJson();
-            services.AddMvc(options => { options.Filters.Add<ValidationFilter>(); });
+                .AddNewtonsoftJson(o =>
+                {
+                    o.SerializerSettings.Converters.Add(new StringEnumConverter());
+                });
+
+            services.AddMvc(options => { options.Filters.Add<ValidationFilter>(); })
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ApplicationModule>());
 
             services.RegisterModule(new SwaggerModule())
                 .RegisterModule(new ApplicationModule())

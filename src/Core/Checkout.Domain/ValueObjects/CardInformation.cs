@@ -16,7 +16,7 @@ namespace Checkout.Domain.ValueObjects
         public CardInformation(string cardNumber, string cardHolder)
         {
             CardNumber = cardNumber.EncryptSha512();
-            MaskedCardNumber = cardNumber.Mask(4, 10);
+            MaskedCardNumber = cardNumber.Mask(2, cardNumber.Length - 4);
             CardHolder = cardHolder;
         }
 

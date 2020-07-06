@@ -49,7 +49,7 @@ namespace Checkout.Extensions
 
             var mask = new string(maskCharacter, maskLength);
             var unMaskStart = source.Substring(0, start);
-            var unMaskEnd = source.Substring(start + maskLength, source.Length - maskLength);
+            var unMaskEnd = source.Substring(start + maskLength, source.Length - maskLength - start);
 
             return $"{unMaskStart}{mask}{unMaskEnd}";
         }
