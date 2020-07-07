@@ -1,11 +1,12 @@
 ﻿using Checkout.Enums;
+using MediatR;
 
 namespace Checkout.Application.Payments.Commands.CreatePayment
 {
     /// <summary>
-    /// Class describes payment created event.
+    /// Class describes payment created notification.
     /// </summary>
-    public class PaymentCreated
+    public class PaymentCreated : INotification
     {
         /// <summary>
         /// Gets or sets an id.

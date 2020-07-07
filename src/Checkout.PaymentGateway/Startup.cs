@@ -11,6 +11,7 @@ using Checkout.Persistence.Modules.Sql;
 using Checkout.Application.Common.Configuration;
 using FluentValidation.AspNetCore;
 using Newtonsoft.Json.Converters;
+using Checkout.PaymentGateway.Workers;
 
 namespace Checkout.PaymentGateway
 {
@@ -35,8 +36,10 @@ namespace Checkout.PaymentGateway
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ApplicationModule>());
 
             services.RegisterModule(new SwaggerModule())
-                .RegisterModule(new ApplicationModule())
-                .RegisterModule(new SqlModule(Configuration));
+                .RegisterModule(new SqlModule(Configuration))
+                .RegisterModule(new ApplicationModule(Configuration));
+
+            services.AddHostedService<GatewayWorker>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

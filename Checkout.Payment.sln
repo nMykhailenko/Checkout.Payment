@@ -13,29 +13,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{87C95E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F7D52CA0-FF0B-4690-9AA6-873A45CAB148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.ApplicationConfiguration", "src\Common\Checkout.ApplicationConfiguration\Checkout.ApplicationConfiguration.csproj", "{4290FB97-5F2F-4DF3-8CC2-47661A4F2C63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.ApplicationConfiguration", "src\Common\Checkout.ApplicationConfiguration\Checkout.ApplicationConfiguration.csproj", "{4290FB97-5F2F-4DF3-8CC2-47661A4F2C63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Extensions", "src\Common\Checkout.Extensions\Checkout.Extensions.csproj", "{4E14297B-652B-44D8-B2FB-1BFCEC115B52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Extensions", "src\Common\Checkout.Extensions\Checkout.Extensions.csproj", "{4E14297B-652B-44D8-B2FB-1BFCEC115B52}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A0AD3C70-8D41-4C4F-8AE3-D7CED2860053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Enums", "src\Common\Checkout.Enums\Checkout.Enums.csproj", "{920F5592-0E3C-4E13-B8F2-6C0399F03181}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Enums", "src\Common\Checkout.Enums\Checkout.Enums.csproj", "{920F5592-0E3C-4E13-B8F2-6C0399F03181}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Middleware", "src\Common\Checkout.Middleware\Checkout.Middleware.csproj", "{12D9C86A-AAA8-42E4-B156-AE06AFB1719B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Middleware", "src\Common\Checkout.Middleware\Checkout.Middleware.csproj", "{12D9C86A-AAA8-42E4-B156-AE06AFB1719B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Models", "src\Common\Checkout.Models\Checkout.Models.csproj", "{FEFF220C-EA36-4077-8B25-BBB19FD52D20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Models", "src\Common\Checkout.Models\Checkout.Models.csproj", "{FEFF220C-EA36-4077-8B25-BBB19FD52D20}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Filters", "src\Common\Checkout.Filters\Checkout.Filters.csproj", "{D63A467D-B95C-4C1B-B268-5781A0632CE9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Helpers", "src\Common\Checkout.Helpers\Checkout.Helpers.csproj", "{851B3107-4615-45F4-A483-FD99931F411B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Domain", "src\Core\Checkout.Domain\Checkout.Domain.csproj", "{30E5389F-69E7-433A-A2B5-6515BCF0AE29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Domain", "src\Core\Checkout.Domain\Checkout.Domain.csproj", "{30E5389F-69E7-433A-A2B5-6515BCF0AE29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Application", "src\Core\Checkout.Application\Checkout.Application.csproj", "{6DFD46E2-DF39-4CF9-A77B-45C5BC915BF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Application", "src\Core\Checkout.Application\Checkout.Application.csproj", "{6DFD46E2-DF39-4CF9-A77B-45C5BC915BF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Persistence", "src\Core\Checkout.Persistence\Checkout.Persistence.csproj", "{4212D519-EA37-41D8-A50F-3AB70969D533}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Persistence", "src\Core\Checkout.Persistence\Checkout.Persistence.csproj", "{4212D519-EA37-41D8-A50F-3AB70969D533}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.Tests", "tests\Checkout.Tests\Checkout.Tests.csproj", "{811280B7-19D0-4893-8C53-7EDFB20F41DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checkout.Tests", "tests\Checkout.Tests\Checkout.Tests.csproj", "{811280B7-19D0-4893-8C53-7EDFB20F41DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackhroundJobs", "BackhroundJobs", "{33663AE0-2079-44AB-9B35-1F862B8E531D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Checkout.BankProccessing", "src\BackgroundJobs\Checkout.BankProccessing\Checkout.BankProccessing.csproj", "{ABAFACBD-DB2D-4465-8B38-C2705A514BE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +95,10 @@ Global
 		{811280B7-19D0-4893-8C53-7EDFB20F41DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{811280B7-19D0-4893-8C53-7EDFB20F41DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{811280B7-19D0-4893-8C53-7EDFB20F41DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABAFACBD-DB2D-4465-8B38-C2705A514BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABAFACBD-DB2D-4465-8B38-C2705A514BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABAFACBD-DB2D-4465-8B38-C2705A514BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABAFACBD-DB2D-4465-8B38-C2705A514BE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +119,8 @@ Global
 		{6DFD46E2-DF39-4CF9-A77B-45C5BC915BF1} = {A0AD3C70-8D41-4C4F-8AE3-D7CED2860053}
 		{4212D519-EA37-41D8-A50F-3AB70969D533} = {A0AD3C70-8D41-4C4F-8AE3-D7CED2860053}
 		{811280B7-19D0-4893-8C53-7EDFB20F41DF} = {27245998-F24A-4372-9EB0-FFFD18613979}
+		{33663AE0-2079-44AB-9B35-1F862B8E531D} = {4E81E007-1D23-47DA-9E73-72346C328910}
+		{ABAFACBD-DB2D-4465-8B38-C2705A514BE7} = {33663AE0-2079-44AB-9B35-1F862B8E531D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E178B991-997F-46FC-A30C-0D092C89A286}

@@ -2,6 +2,7 @@
 using Checkout.Domain.Entitities;
 using Checkout.Domain.ValueObjects;
 using Checkout.Persistence;
+using MassTransit;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -54,13 +55,13 @@ namespace Checkout.Application.Payments.Commands.CreatePayment
         public class Handler : IRequestHandler<CreatePaymentCommand, PaymentResponseModel>
         {
             private readonly CheckoutDbContext _context;
-            private readonly IMediator _mediator;
+            private readonly IPublishEndpoint _endpoint;
             private readonly IMapper _mapper;
 
-            public Handler(CheckoutDbContext context, IMediator mediator, IMapper mapper)
+            public Handler(CheckoutDbContext context, IPublishEndpoint endpoint, IMapper mapper)
             {
                 _context = context;
-                _mediator = mediator;
+                _endpoint = endpoint;
                 _mapper = mapper;
             }
 
@@ -82,7 +83,7 @@ namespace Checkout.Application.Payments.Commands.CreatePayment
                     State = entity.Transaction.State
                 };
 
-                //await _mediator.Publish(paymentCreated, cancellationToken);
+                await _endpoint.Publish(paymentCreated, cancellationToken);
 
                 return _mapper.Map<PaymentResponseModel>(entity);
             }
