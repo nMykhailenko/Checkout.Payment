@@ -41,7 +41,7 @@ namespace Checkout.Application.Common.Behaviours
             {
                 var name = typeof(TRequest).Name;
 
-                _logger.LogWarning("Northwind Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}",
+                _logger.LogWarning("Checkout Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}",
                     name, _timer.ElapsedMilliseconds, request);
             }
 
