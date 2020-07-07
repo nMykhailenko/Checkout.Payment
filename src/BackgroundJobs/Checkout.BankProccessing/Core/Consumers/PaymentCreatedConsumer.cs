@@ -3,8 +3,6 @@ using Checkout.BankProccessing.Core.Bank.Contract;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Checkout.BankProccessing.Core.Consumers
@@ -26,6 +24,8 @@ namespace Checkout.BankProccessing.Core.Consumers
         {
             try
             {
+                _logger.LogInformation("Payment created handle {Message}", context.Message);
+
                 await _bankService.ProccessPaymentAsync(context.Message);
             }
             catch (Exception ex)

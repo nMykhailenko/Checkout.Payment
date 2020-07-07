@@ -77,7 +77,7 @@ namespace Checkout.Application.Payments.Commands.CreatePayment
                     var entity = new Payment
                     {
                         CardInformation = new CardInformation(request.CardNumber, request.CardHolder),
-                        Transaction = new Transaction { Amount = request.Amount, UserId = request.UserId }
+                        Transaction = new Transaction { Amount = request.Amount, UserId = request.UserId, }
                     };
 
                     _context.Payments.Add(entity);

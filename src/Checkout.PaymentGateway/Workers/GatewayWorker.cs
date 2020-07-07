@@ -17,6 +17,12 @@ namespace Checkout.PaymentGateway.Workers
         private readonly IBusControl _busControl;
         private readonly IServiceProvider _serviceProvider;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="serviceProvider">Service provider.</param>
+        /// <param name="logger">Logger.</param>
+        /// <param name="busControl">Bus control.</param>
         public GatewayWorker(IServiceProvider serviceProvider, ILogger<GatewayWorker> logger, IBusControl busControl)
         {
             _logger = logger;

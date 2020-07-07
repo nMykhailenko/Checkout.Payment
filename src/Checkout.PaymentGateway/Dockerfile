@@ -11,7 +11,7 @@ COPY . .
 RUN dotnet build "Checkout.PaymentGateway/Checkout.PaymentGateway.csproj" -c Release -o /app
 
 FROM build as publish
-RUN dotnet publish "/Checkout.PaymentGateway.csproj" -c Release -o /app
+RUN dotnet publish "Checkout.PaymentGateway/Checkout.PaymentGateway.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app

@@ -5,11 +5,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\Checkout.PaymentGateway.xml</DocumentationFile>
+    <DocumentationFile>Checkout.PaymentGateway.xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DocumentationFile>bin\Release\Checkout.PaymentGateway.xml</DocumentationFile>
+    <DocumentationFile>Checkout.PaymentGateway.xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,5 +34,13 @@
     <ProjectReference Include="..\Core\Checkout.Application\Checkout.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
 </Project>

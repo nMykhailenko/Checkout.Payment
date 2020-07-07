@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Checkout.PaymentGateway</name>
+    </assembly>
+    <members>
+        <member name="T:Checkout.PaymentGateway.Configuration.Modules.SwaggerModule">
+            <summary>
+            Swagger module.
+            </summary>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Configuration.Modules.SwaggerModule.Load(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Load swagger module.
+            </summary>
+            <param name="services">Current service collection.</param>
+            <returns>Updated service collection.</returns>
+        </member>
+        <member name="T:Checkout.PaymentGateway.Controllers.BaseController">
+            <summary>
+            Class describes base controller.
+            </summary>
+        </member>
+        <member name="P:Checkout.PaymentGateway.Controllers.BaseController.Mediator">
+            <summary>
+            Mediator
+            </summary>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Controllers.BaseController.ReturnIActionErrorResponse(System.String,System.Net.HttpStatusCode)">
+            <summary>
+            Gets an error IAction Result.
+            </summary>
+            <param name="errorMessage">An error message.</param>
+            <param name="statusCode">The http status code.</param>
+            <returns>IActionResult with error model.</returns>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Controllers.BaseController.ReturnIActionErrorResponse(System.Object,System.Net.HttpStatusCode)">
+            <summary>
+            Gets an error IAction Result.
+            </summary>
+            <param name="errorModel">An error model.</param>
+            <param name="statusCode">The http status code.</param>
+            <returns>IActionResult with error model.</returns>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Controllers.BaseController.ReturnIActionSuccessfulResponse(System.Object,System.Net.HttpStatusCode)">
+            <summary>
+            Gets an error IAction Result.
+            </summary>
+            <param name="model">A model to return.</param>
+            <param name="statusCode">The http status code.</param>
+            <returns>IActionResult with error model.</returns>
+        </member>
+        <member name="T:Checkout.PaymentGateway.Controllers.PaymentController">
+            <summary>
+            Payment controller
+            </summary>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Controllers.PaymentController.Pay(Checkout.Application.Payments.Commands.CreatePayment.CreatePaymentCommand)">
+            <summary>
+            Initialize payment from merchant.
+            </summary>
+            <returns>Action result with payment response model.</returns>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Controllers.PaymentController.Get(System.String)">
+            <summary>
+            Get payment information by payment unique identifier.
+            </summary>
+            <param name="id">Transaction request id.</param>
+            <returns>Payment information.</returns>
+        </member>
+        <member name="T:Checkout.PaymentGateway.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Program.Main(System.String[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Program.CreateHostBuilder(System.String[])">
+            <inheritdoc/>
+        </member>
+        <member name="T:Checkout.PaymentGateway.Startup">
+            <summary>
+            Startup.
+            </summary>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            ctor
+            </summary>
+            <param name="configuration">Configuration</param>
+        </member>
+        <member name="P:Checkout.PaymentGateway.Startup.Configuration">
+            <summary>
+            Gets or sets configuration.
+            </summary>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Checkout.PaymentGateway.Workers.GatewayWorker">
+            <summary>
+            Payment gateway worker.
+            </summary>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Workers.GatewayWorker.#ctor(System.IServiceProvider,Microsoft.Extensions.Logging.ILogger{Checkout.PaymentGateway.Workers.GatewayWorker},MassTransit.IBusControl)">
+            <summary>
+            ctor
+            </summary>
+            <param name="serviceProvider">Service provider.</param>
+            <param name="logger">Logger.</param>
+            <param name="busControl">Bus control.</param>
+        </member>
+        <member name="M:Checkout.PaymentGateway.Workers.GatewayWorker.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Execute async.
+            </summary>
+            <param name="stoppingToken">Cancellation token.</param>
+        </member>
+    </members>
+</doc>

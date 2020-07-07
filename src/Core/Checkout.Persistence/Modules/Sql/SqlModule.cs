@@ -28,7 +28,7 @@ namespace Checkout.Persistence.Modules.Sql
             services.Configure<SqlConnectionSettings>(x => _configuration.GetSection(nameof(SqlConnectionSettings)).Bind(x));
 
             services.AddDbContext<CheckoutDbContext>(options =>
-                options.UseSqlServer(sqlSettings.DefaultConnection, _ => _.EnableRetryOnFailure()));
+                options.UseNpgsql(sqlSettings.DefaultConnection, _ => _.EnableRetryOnFailure()));
 
             return services;
         }

@@ -11,10 +11,6 @@ namespace Checkout.Persistence.Configuration
     {
         public void Configure(EntityTypeBuilder<Transaction> builder)
         {
-            builder.HasOne(x => x.Payment)
-                .WithOne(x => x.Transaction)
-                .HasForeignKey<Payment>(x => x.TransactionId);
-
             builder.Property(x => x.Amount)
                 .HasColumnType("decimal(18,2)");
         }

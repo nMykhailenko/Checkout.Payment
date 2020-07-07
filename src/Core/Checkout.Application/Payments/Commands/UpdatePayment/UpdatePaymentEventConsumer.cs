@@ -25,6 +25,8 @@ namespace Checkout.Application.Payments.Commands.UpdatePayment
         {
             try
             {
+                _logger.LogInformation("Update payment event handle {Message}", context.Message);
+
                 var dbContext = _serviceProvider.GetRequiredService<CheckoutDbContext>();
                 var transaction = await dbContext.Transactions
                     .FirstOrDefaultAsync(x => x.RequestId == context.Message.RequestId);

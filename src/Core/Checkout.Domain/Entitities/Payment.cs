@@ -13,11 +13,6 @@ namespace Checkout.Domain.Entitities
         public long Id { get; set; }
 
         /// <summary>
-        /// Gets or sets a transaction id.
-        /// </summary>
-        public long TransactionId { get; set; }
-
-        /// <summary>
         /// Gets or sets a transaction.
         /// </summary>
         public Transaction Transaction { get; set; }

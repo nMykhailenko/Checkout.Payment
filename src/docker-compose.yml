@@ -1,4 +1,8 @@
 version: "3.6"
+networks:
+    checkout:
+      driver: bridge
+
 services:
     checkout-rabbitmq:
         container_name: rabbitmq
@@ -9,18 +13,60 @@ services:
             - RABBITMQ_DEFAULT_USER=guest
             - RABBITMQ_DEFAULT_PASS=guest        
         image: rabbitmq:3-management
+        networks:
+            - checkout
+    
+    checkout-postgres-db:
+        image: postgres:latest
+        container_name: checkout-postgres-db
+        restart: always
+        ports:
+            - 5433:5432
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=Checkout.Payment
+        networks:
+            - checkout
+        volumes:
+            - checkout-data:/var/lib/postgresql/data
+      
                 
     payment-gateway-api:
         container_name: payment-gateway-api
         ports:
-            - 8000:80
-            - 8001:443
-        environment:
-            - "ASPNETCORE_URLS=https://+;http://+"
+            - 8010:80
+            - 8011:443
         image: payment-gateway-api:latest   
         build:
             context: .
             dockerfile: ./Checkout.PaymentGateway/Dockerfile
-        restart: on-failure        
+        restart: on-failure
+        links: 
+            - checkout-postgres-db
+            - checkout-rabbitmq       
         depends_on:
             - checkout-rabbitmq
+            - checkout-postgres-db
+        networks:
+            - checkout 
+    
+    bank-proccessor:
+        container_name: bank-proccessor
+        ports:
+            - 8020:80
+            - 8021:443
+        image: bank-proccessor:latest   
+        build:
+            context: .
+            dockerfile: ./BackgroundJobs/Checkout.BankProccessing/Dockerfile
+        restart: on-failure  
+        links: 
+            - checkout-rabbitmq      
+        depends_on:
+            - checkout-rabbitmq
+        networks:
+            - checkout 
+
+volumes:
+    checkout-data:

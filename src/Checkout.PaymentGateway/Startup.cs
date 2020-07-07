@@ -15,15 +15,26 @@ using Checkout.PaymentGateway.Workers;
 
 namespace Checkout.PaymentGateway
 {
+    /// <summary>
+    /// Startup.
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="configuration">Configuration</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Gets or sets configuration.
+        /// </summary>
         public IConfiguration Configuration { get; }
 
+        /// <inheritdoc/>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
@@ -42,6 +53,7 @@ namespace Checkout.PaymentGateway
             services.AddHostedService<GatewayWorker>();
         }
 
+        /// <inheritdoc/>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -49,9 +61,8 @@ namespace Checkout.PaymentGateway
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseSwaggerModule();
+            app.UseExceptionHandlerMiddleware();
 
             app.UseRouting();
 

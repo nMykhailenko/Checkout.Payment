@@ -29,7 +29,7 @@ namespace Checkout.Extensions
         /// </summary>
         /// <param name="applicationBuilder">Current application builder.</param>
         /// <returns>Update application builder.</returns>
-        public static IApplicationBuilder UseExceptionHandler(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder UseExceptionHandlerMiddleware(this IApplicationBuilder applicationBuilder)
         {
             return applicationBuilder.UseMiddleware<ExceptionMiddleware>();
         }
