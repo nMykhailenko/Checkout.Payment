@@ -12,6 +12,7 @@ using Checkout.Application.Common.Configuration;
 using FluentValidation.AspNetCore;
 using Newtonsoft.Json.Converters;
 using Checkout.PaymentGateway.Workers;
+using Prometheus;
 
 namespace Checkout.PaymentGateway
 {
@@ -56,6 +57,20 @@ namespace Checkout.PaymentGateway
         /// <inheritdoc/>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var counter = Metrics.CreateCounter("payment_gateway_path_counter", "Counts requests to the Payment Gateway endpoints", new CounterConfiguration
+            {
+                LabelNames = new[] { "method", "endpoint" }
+            });
+
+            app.Use((context, next) =>
+            {
+                counter.WithLabels(context.Request.Method, context.Request.Path).Inc();
+                return next();
+            });
+
+            app.UseMetricServer();
+            app.UseHttpMetrics();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

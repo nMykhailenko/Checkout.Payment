@@ -36,7 +36,7 @@ namespace Checkout.PaymentGateway.Controllers
         /// <returns>Payment information.</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(PaymentDetailResponseModel), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ErrorResponseModel), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Get(string id)
         {
             var response = await Mediator.Send(new GetPaymentDetailQuery { RequestId = id });

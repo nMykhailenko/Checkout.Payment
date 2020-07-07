@@ -68,5 +68,25 @@ services:
         networks:
             - checkout 
 
+    prometheus:
+        image: prom/prometheus
+        restart: always
+        ports:
+            - 9090:9090
+        volumes:
+            - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+        networks:
+            - checkout
+    
+    grafana: 
+        image: grafana/grafana
+        environment:
+            - GF_SECURITY_ADMIN_PASSWORD=Qwerty1!Qwerty1!
+        restart: always
+        ports:
+            - 3000:3000
+        networks:
+            - checkout
+
 volumes:
     checkout-data:
