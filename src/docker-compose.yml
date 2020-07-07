@@ -1,0 +1,26 @@
+version: "3.6"
+services:
+    checkout-rabbitmq:
+        container_name: rabbitmq
+        ports:
+            - 5672:5672
+            - 15672:15672
+        environment:
+            - RABBITMQ_DEFAULT_USER=guest
+            - RABBITMQ_DEFAULT_PASS=guest        
+        image: rabbitmq:3-management
+                
+    payment-gateway-api:
+        container_name: payment-gateway-api
+        ports:
+            - 8000:80
+            - 8001:443
+        environment:
+            - "ASPNETCORE_URLS=https://+;http://+"
+        image: payment-gateway-api:latest   
+        build:
+            context: .
+            dockerfile: ./Checkout.PaymentGateway/Dockerfile
+        restart: on-failure        
+        depends_on:
+            - checkout-rabbitmq

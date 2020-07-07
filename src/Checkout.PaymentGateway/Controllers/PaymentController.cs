@@ -1,5 +1,6 @@
 ﻿using Checkout.Application.Payments.Commands.CreatePayment;
 using Checkout.Application.Payments.Query.GetPaymentDetail;
+using Checkout.Models.Models;
 using Checkout.Models.ResponseModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,7 @@ namespace Checkout.PaymentGateway.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(PaymentResponseModel), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponseModel), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Pay([FromBody]CreatePaymentCommand paymentCommand)
         {
             var response = await Mediator.Send(paymentCommand);

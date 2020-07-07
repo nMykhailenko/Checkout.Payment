@@ -4,6 +4,8 @@ using Checkout.Domain.ValueObjects;
 using Checkout.Persistence;
 using MassTransit;
 using MediatR;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -58,7 +60,10 @@ namespace Checkout.Application.Payments.Commands.CreatePayment
             private readonly IPublishEndpoint _endpoint;
             private readonly IMapper _mapper;
 
-            public Handler(CheckoutDbContext context, IPublishEndpoint endpoint, IMapper mapper)
+            public Handler(
+                CheckoutDbContext context,
+                IPublishEndpoint endpoint,
+                IMapper mapper)
             {
                 _context = context;
                 _endpoint = endpoint;
@@ -67,25 +72,31 @@ namespace Checkout.Application.Payments.Commands.CreatePayment
 
             public async Task<PaymentResponseModel> Handle(CreatePaymentCommand request, CancellationToken cancellationToken)
             {
-                var entity = new Payment
+                try
                 {
-                    CardInformation = new CardInformation(request.CardNumber, request.CardHolder),
-                    Transaction = new Transaction { Amount = request.Amount, UserId = request.UserId }
-                };
+                    var entity = new Payment
+                    {
+                        CardInformation = new CardInformation(request.CardNumber, request.CardHolder),
+                        Transaction = new Transaction { Amount = request.Amount, UserId = request.UserId }
+                    };
 
-                _context.Payments.Add(entity);
-                await _context.SaveChangesAsync(cancellationToken);
+                    _context.Payments.Add(entity);
+                    await _context.SaveChangesAsync(cancellationToken);
 
-                var paymentCreated = new PaymentCreated
+                    var paymentCreated = new PaymentCreated
+                    {
+                        Id = entity.Id,
+                        RequestId = entity.Transaction.RequestId,
+                        State = entity.Transaction.State
+                    };
+
+                    await _endpoint.Publish(paymentCreated, cancellationToken);
+                    return _mapper.Map<PaymentResponseModel>(entity);
+                }
+                catch (Exception ex)
                 {
-                    Id = entity.Id,
-                    RequestId = entity.Transaction.RequestId,
-                    State = entity.Transaction.State
-                };
-
-                await _endpoint.Publish(paymentCreated, cancellationToken);
-
-                return _mapper.Map<PaymentResponseModel>(entity);
+                    throw ex;
+                }
             }
         }
     }
