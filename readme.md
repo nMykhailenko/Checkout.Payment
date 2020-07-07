@@ -22,3 +22,15 @@
  2. Add integration/unit, pefomance tests.
  3. Add more custom metrics and finish setup prometheus/graphana.
  4. Add background checker. Move payment to status expired if bank not proccessed your payment.
+
+ ## How to run
+
+ In **/src** folder you need to run:
+ ```
+ docker-compose build
+ ``` 
+ then 
+ ```
+ docker-compose up
+ ```
+ 
